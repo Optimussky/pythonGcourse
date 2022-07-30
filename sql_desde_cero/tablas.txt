@@ -1,0 +1,134 @@
+# Crear tablas con SQLite
+
+CREATE TABLE clientes (
+	id INTEGER NOT NULL,
+	nombre TEXT,
+	apellido TEXT NOT NULL,
+	email TEXT NOT NULL,
+	fecha_registro DATETIME NOT NULL,
+	telefono INTEGER,
+	PRIMARY KEY (id AUTOINCREMENT)
+);
+
+# Agregar un registro
+
+INSERT INTO clientes(nombre, apellido, email, fecha_registro, telefono)
+VALUES(
+	"Alberto",
+	"Romero",
+	"optimussky05@gmail.com",
+	"2022-07-29 13:32:04",
+	1234567890
+),
+(
+	"Pedro",
+	"Lopez",
+	"lopez@email.com",
+	"2022-07-29 13:40:05",
+	NULL
+);
+
+
+--SELECT * FROM clientes;
+--SELECT nombre, apellido FROM clientes;
+--SELECT id,nombre, email FROM clientes WHERE id= 1;
+--SELECT id,nombre, email FROM clientes WHERE id IN (1,2,3, 8,9);
+
+-- Actualizar datos
+--UPDATE clientes SET apellido = "Rubicon Matts" WHERE id = 9;
+--SELECT * FROM clientes WHERE id=7;
+--UPDATE clientes SET telefono = "24635678" WHERE id = 9;
+
+
+--Eliminar registros
+--DELETE FROM clientes WHERE id=5;
+--SELECT * from clientes;
+
+
+--SELECT * FROM clientes;
+--SELECT nombre, apellido FROM clientes;
+--SELECT id,nombre, email FROM clientes WHERE id= 1;
+--SELECT id,nombre, email FROM clientes WHERE id IN (1,2,3, 8,9);
+
+-- Actualizar datos
+--UPDATE clientes SET apellido = "Rubicon Matts" WHERE id = 9;
+--SELECT * FROM clientes WHERE id=7;
+--UPDATE clientes SET telefono = "24635678" WHERE id = 9;
+
+--Eliminar registros
+--DELETE FROM clientes WHERE id=5;
+--SELECT * from clientes;
+
+-- ALTER TABLE Modificar tablas AGREGAR campo a tabla
+--ALTER TABLE clientes ADD rol TEXT;
+
+/*
+INSERT INTO clientes (nombre, apellido, email, fecha_registro, telefono, rol)
+VALUES(
+	"Chuck",
+	"Norris", 
+	"Chuck@mail.com",
+	"2021-07-01 15:08:08",
+	24612333,
+	"cliente"
+); */
+-- BORRAR UNA COLUMNA: ALTER TABLE clientes DROP COLUMN telefono; --NO APLICA EN SQLITE
+--ALTER TABLE clientes DROP COLUMN telefono;
+
+-- RENOMBRAR UNA COLUMNA: ALTER TABLE clientes RENAME TO mi_telefono; --NO APLICA EN SQLITE
+--ALTER TABLE clientes RENAME TO telefono;
+
+-- TABLAS RELACIONADAS CON FOREIGN KEY
+/*
+CREATE TABLE roles(
+	id INTEGER NOT NULL,
+	nombre TEXT NOT NULL,
+	PRIMARY KEY (id AUTOINCREMENT)
+);
+*/
+/*
+INSERT INTO roles(nombre) VALUES
+("cliente"),
+("administrador"),
+("moderador");
+*/
+/*
+
+CREATE TABLE usuarios (
+	id INTEGER NOT NULL,
+	nombre TEXT NOT NULL,
+	rol INTEGER NOT NULL,
+	PRIMARY KEY (id AUTOINCREMENT)
+	FOREIGN KEY (rol) REFERENCES roles(id)
+	
+); */
+/*
+INSERT INTO usuarios (nombre, rol) VALUES
+("Alberto", 2),
+("Sofia",1),
+("Martina",1),
+("José",3),
+("Lucas", 1),
+("Gonzalo",1);
+*/
+
+--SELECT * FROM usuarios;
+--SELECT nombre,rol FROM usuarios;
+
+/*
+SELECT u.nombre Nombre_usuario, r.nombre Rol_usuario
+FROM usuarios u, roles r
+WHERE u.rol = r.id;
+*/
+
+-- Traer un usuario especifico
+--SELECT nombre, rol FROM usuarios WHERE id = 1;
+
+/*
+SELECT u.nombre as nombre_usuario, r.nombre as role_usuario
+FROM usuarios u, roles r
+WHERE u.id = 1
+AND u.rol = r.id;
+*/
+
+
